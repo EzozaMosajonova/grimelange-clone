@@ -15,7 +15,7 @@ import {
     Collapse,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import SearchIcon from '@mui/icons-material/Search';
+import { Search } from "lucide-react";
 import HomeIcon from '@mui/icons-material/Home';
 import PhoneIcon from '@mui/icons-material/Phone';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
@@ -156,7 +156,23 @@ export default function Navbar() {
                         </Box>
 
                         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                            <IconButton><SearchIcon /></IconButton>
+                            {/* Desktop (md va katta) versiya uchun qidiruv oynasi */}
+                            <div className="hidden md:flex items-center justify-between border-b border-black w-72">
+                                <input
+                                    type="text"
+                                    placeholder="Arama"
+                                    className="outline-none text-sm p-1 w-full placeholder:text-black text-black"
+                                />
+                                <Search className="w-5 h-5 text-black" />
+                            </div>
+
+                            {/* Mobil (md dan kichik) versiya uchun faqat ikonka */}
+                            <div className="md:hidden">
+                                <IconButton>
+                                    <Search className="w-5 h-5 text-gray-800" />
+                                </IconButton>
+                            </div>
+
                             <IconButton><HomeIcon /></IconButton>
                             <IconButton><PhoneIcon /></IconButton>
                             <IconButton><ShoppingCartIcon /></IconButton>
@@ -166,6 +182,7 @@ export default function Navbar() {
                                 </IconButton>
                             )}
                         </Box>
+
                     </Toolbar>
 
                     {/* Popover for desktop */}
